@@ -1,0 +1,58 @@
+/* */
+body{
+	font-family: sans-serif, "Helvetica";
+}
+table{
+	font-family: sans-serif, "Helvetica";
+}
+
+#page-wrapper{
+	padding: 0 30px 30px;
+}
+.clickable-table:hover{
+	cursor: pointer;
+}
+
+.btn-green{
+    color: #FFF;
+    background-color: #3DAB4B;
+    border-color: #308A3C;
+    font-weight: bold;
+    padding: 6px 30px;
+}
+
+
+.panel-heading{
+	color: white;
+	text-decoration: none;
+}
+
+.panel-primary {
+	background-color: #337ab7;
+}
+
+
+#auta-klient-tabulka{
+	display: none;
+	margin-top: 20px;
+}
+
+.nahled .bunka{
+	margin-top: 10px;
+}
+
+.nahled .auta-vypis{
+	margin-top: 35px;
+}
+
+.auta-vypis tr:hover{
+	cursor: pointer;
+}
+
+.green-font{
+	color: green;
+}
+
+.red-font{
+	color: red;
+}

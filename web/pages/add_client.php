@@ -7,7 +7,7 @@
                         <h1 class="page-header">Přidat klienta do databáze </h1>
                         <div class="col-md-6 container">
                             <h4>Údaje klienta</h4>
-                            <form role="form" method="POST">
+                            <form role="form" method="POST" action="script/add_client.script.php">
                             <div class="form-group col-md-12">
                                 <label>Jméno</label>
                                 <input type="text" name="jmeno" class="form-control">
@@ -22,22 +22,22 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label>E-mail</label>
-                                <input type="email" name="mail" class="form-control">
+                                <input type="email" name="email" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <h3 class="col-md-12">Adresa</h3>
                             <div class="form-group col-md-12">
                                 <label>Město</label>
-                                <input type="text" name="mesto" class="form-control">
+                                <input type="text" name="a_mesto" class="form-control">
                             </div>
                             <div class="form-group col-md-12">
                                 <label>Ulice a č.p.</label>
-                                <input type="text" name="ulice" class="form-control">
+                                <input type="text" name="a_ulice" class="form-control">
                             </div>
                             <div class="form-group col-md-12">
                                 <label>PSČ</label>
-                                <input type="text" name="psc" class="form-control">
+                                <input type="text" name="a_psc" class="form-control">
                             </div>
                         </div>
                         <div class="col-md-12 dropdown">
@@ -89,7 +89,7 @@
                     <!-- /.panel -->
                         </div>
                         <div class="form-group col-md-12 text-right">
-                             <input type="submit" name="pridat_klienta" class="btn btn-green" value="Přidat"/>
+                             <input type="submit" name="add_client" class="btn btn-green" value="Přidat"/>
                         </div>
                         </form>
                         

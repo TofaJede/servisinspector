@@ -7,7 +7,7 @@ class database {
 	private $_host				= 'localhost';
 	private $_user				= 'root';
 	private $_password			= '';
-	private $_database			= '';
+	private $_database			= 'servisinspector';
 	private $_mysqli			= NULL;
 	private $_inst 				= NULL;
 

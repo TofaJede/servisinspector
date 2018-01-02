@@ -1,4 +1,10 @@
 <?php
+// Including base classes
+require 'model/database.class.php';
+require 'model/defaultModel.class.php';
+// Connecting to database
+$mysqli = new database();
+
     if(!isset($_GET['p'])){
         $stranka = "uvod";
     } 

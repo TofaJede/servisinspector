@@ -1,5 +1,9 @@
 <?php
 //nahled s vypisem klienta
+
+$klientClass = new defaultModel($mysqli, 'klient');
+$klient = $klientClass->getById($id);
+
 ?>
 
  <!-- Page Content -->
@@ -9,15 +13,15 @@
                     <div class="col-lg-12 nahled">
                         <h1 class="page-header">Náhled klienta</h1>
 	                      	<div class="col-md-6">
-	                      		<div class="bunka col-md-12"><strong>Jméno</strong><br>Patrik Šafář</div>
-	                      		<div class="bunka col-md-6"><strong>Telefon</strong><br><a href="tel:+420736289288">+420 736 289 288</a></div>
-	                      		<div class="bunka col-md-6"><strong>E-mail</strong><br><a href="mailto:safarpatrik@seznam.cz">safarpatrik@seznam.cz</a></div>
+	                      		<div class="bunka col-md-12"><strong>Jméno</strong><br><?= $klient['jmeno'] ?></div>
+	                      		<div class="bunka col-md-6"><strong>Telefon</strong><br><a href="tel:<?= $klient['telefon'] ?>"><?= $klient['telefon'] ?></a></div>
+	                      		<div class="bunka col-md-6"><strong>E-mail</strong><br><a href="mailto:<?= $klient['email'] ?>"><?= $klient['email'] ?></a></div>
 	                      	</div>
 	                      	<div class="col-md-6">
 	                      		<h4>Adresa</h4>
-	                      		<div class="bunka">Palackého třída č. 55
-	                      		<br>Brno
-	                      		<br>612 00</div>
+	                      		<div class="bunka"><?= $klient['a_ulice'] ?>
+	                      		<br><?= $klient['a_mesto'] ?>
+	                      		<br><?= $klient['a_psc'] ?></div>
 	                      	</div>
 		                <div class="col-md-12 auta-vypis">
                         <h4>Auta patřící klientovi</h4>
@@ -39,39 +43,33 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr onclick="window.document.location='?p=nahled_auta&id=1';">
-                                           <td>4B0 6661</td>
-                                            <td>12345678901234567</td>
-                                            <td>STK 1 </td>
-                                            <td>1995</td>
-                                            <td>Škoda</td>
-                                            <td>Octavia</td>
-                                            <td>28.06.1995</td>
-                                            <td>Zkontrolovat stav</td>
-                                            <td>2l 360koní 12334</td>
-                                        </tr>
-                                        <tr onclick="window.document.location='?p=nahled_auta&id=2';">
-                                           <td>4B0 6661</td>
-                                            <td>---</td>
-                                            <td>STK 1 </td>
-                                            <td>1995</td>
-                                            <td>Škoda</td>
-                                            <td>Octavia</td>
-                                            <td>28.06.1995</td>
-                                            <td>Zkontrolovat stav</td>
-                                            <td>2l 360koní 12334</td>
-                                        </tr>
-                                        <tr onclick="window.document.location='?p=nahled_auta&id=3';">
-                                            <td>4B0 6661</td>
-                                            <td>---</td>
-                                            <td>STK 1 </td>
-                                            <td>1995</td>
-                                            <td>Škoda</td>
-                                            <td>Octavia</td>
-                                            <td>28.06.1995</td>
-                                            <td>Zkontrolovat stav</td>
-                                            <td>2l 360koní 12334</td>
-                                        </tr>
+                                    <?php
+                                     $klient_has_autoClass = new defaultModel($mysqli, 'klient_has_auto');
+                                     $klientsCars = $klient_has_autoClass->getRecordByColumn('klient_id', $id);
+                                         if ($klientsCars != false):
+                                             $carClass = new defaultModel($mysqli, 'auto');
+                                                // TODO: jestlize nema auto tak co....
+                                                foreach ($klientsCars as $klientsCar):
+                                                $car = $carClass->getById($klientsCar['auto_id']);
+                                            ?>
+                                                <tr onclick="window.document.location='?p=nahled_auta&id=1';">
+                                                    <td><?= $car['spz'] ?></td>
+                                                    <td><?= $car['vin'] ?></td>
+                                                    <td><?= $car['stk'] ?></td>
+                                                    <td><?= $car['rokVyroby'] ?></td>
+                                                    <td><?= $car['znacka'] ?></td>
+                                                    <td><?= $car['model'] ?></td>
+                                                    <td><?= $car['olej'] ?></td>
+                                                    <td><?= $car['poznamka'] ?></td>
+                                                    <td><?= $car['m_objem']." ".$car['m_vykon']."<br>".$car['m_kod'] ?></td>
+                                                </tr>
+                                            <?php
+                                                endforeach;
+                                                endif;
+                                                if ($klientsCars == false){
+                                                    echo "<h2>Klient nemá přiřazené žádné auto!</h2>";
+                                                }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>

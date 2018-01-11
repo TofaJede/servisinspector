@@ -7,8 +7,8 @@
  */
 
 if (isset($_POST['add_client'])) {
-
-   // die();
+    var_dump($_POST);
+    die();
 
   require '../model/database.class.php';
   $mysqli = new database();
@@ -31,6 +31,8 @@ if (isset($_POST['add_client'])) {
 );
 
   //TODO: jestli bylo prirazeni k novemu klientovy jiz existujici auto, zapsat do DB
+
+
 
 $klient_id = $klient->add($insert_klient);
 if ($klient_id != FALSE) {

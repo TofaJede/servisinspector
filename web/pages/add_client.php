@@ -44,6 +44,12 @@
                         <div class="dropdown-toggle btn btn-default">Přiřadit auto ke klientovi <span class="caret"></span></div> 
                         <div id="auta-klient-tabulka" class="panel panel-default">
                         <div class="panel-heading">Auta v databázi</div>
+                            <?php
+                                $autoClass = new defaultModel($mysqli, 'auto');
+                                $auta = $autoClass->getAll(NULL, FALSE, "owned = 0");
+
+                                if ($auta):
+                            ?>
                         <!-- /.panel-heading -->
                         <div class="panel-body" >
                             <div class="dataTable_wrapper">
@@ -60,28 +66,35 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <?php
+                                        foreach ($auta as $auto):
+                                            foreach ($auto as $key => $value) {
+                                                $$key = $value;
+                                            }
+                                    ?>
                                         <tr class="odd clickable-table gradeX">
-                                            <td><input type="radio" name="auto_id" value="1" /></td>
-                                            <td>4B0 6661</td>
-                                            <td>12345678910234567</td>
-                                            <td>STK 1 </td>
-                                            <td>1995</td>
-                                            <td>Škoda</td>
-                                            <td>Octavia</td>
+                                            <td><input type="radio" name="auto_id" value="<?= $id ?>" /></td>
+                                            <td><?= $spz ?></td>
+                                            <td><?= $vin ?></td>
+                                            <td><?= $stk ?></td>
+                                            <td><?= $rokVyroby ?></td>
+                                            <td><?= $znacka ?></td>
+                                            <td><?= $model ?></td>
                                         </tr>
-                                
-                                        <tr class="odd clickable-table gradeX">
-                                            <td><input type="radio" name="auto_id" value="2" /></td>
-                                            <td>1B6 6661</td>
-                                            <td>---</td>
-                                            <td>STK 2 </td>
-                                            <td>2016</td>
-                                            <td>Opel</td>
-                                            <td>Astra</td>
-                                        </tr>
+                                    <?php
+                                    endforeach;
+                                    ?>
                                     </tbody>
                                 </table>
                             </div>
+                            <?php
+                            endif;
+                            if (!$auto):
+                            ?>
+                            <h2>Žádná volná auta nejsou k dispozici</h2>
+                            <?php
+                            endif;
+                            ?>
                             <!-- /.table-responsive --> 
                         </div>
                         <!-- /.panel-body -->

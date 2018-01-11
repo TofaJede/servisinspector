@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">Přidat auto do databáze </h1>
-                        <form role="form" method="POST" target="script/add_car.script.php">
+                        <form role="form" method="POST" action="script/add_car.script.php">
                         <div class="col-md-6 container">
                             <div class="form-group col-md-12">
                                 <label>SPZ</label>
@@ -21,7 +21,7 @@
                             </div>
                             <div class="form-group col-md-12">
                                 <label>Rok výroby</label>
-                                <input type="email" name="rokVyroby" class="form-control">
+                                <input type="text" name="rokVyroby" class="form-control">
                                 <p class="help-block">např.: 2016</p>
                             </div>
                             <div class="form-group col-md-12">

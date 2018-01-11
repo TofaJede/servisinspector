@@ -112,4 +112,18 @@ class defaultModel
             return FALSE;
         }
     }
+
+    public function getRecordByColumn($column, $value){
+        $query = "SELECT * FROM {$this->_table} WHERE {$column}={$value}";
+        if( $this->_mysqli->num_rows( $query ) > 0 )
+        {
+            $result = $this->_mysqli->get_row( $query );
+            //	die(var_dump($result));
+            return $result;
+        }
+        else
+        {
+            return FALSE;
+        }
+    }
 }

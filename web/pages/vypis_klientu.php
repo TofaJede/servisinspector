@@ -37,26 +37,27 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                       
-                                        <tr class="odd clickable-table gradeX" onclick="window.document.location='?p=nahled_klienta&id=1';">
-                                            <td>Patrik</td>
-                                            <td>Šafář</td>
-                                            <td>736289288</td>
-                                            <td>safarpatrik@seznam.cz</td>
-                                            <td>Brno</td>
-                                            <td>palackého třída 55</td>
-                                            <td>612 00</td>
+                                    <?php
+                                        $klientClass = new defaultModel($mysqli, 'klient');
+                                        $klienti = $klientClass->getAll();
+
+                                        foreach ($klienti as $klient):
+                                            foreach ($klient as $key => $value){
+                                                $$key = $value;
+                                            }
+                                    ?>
+                                        <tr class="odd clickable-table gradeX" onclick="window.document.location='?p=nahled_klienta&id=<?= $id ?>';">
+                                            <td><?= $jmeno ?></td>
+                                            <td><?= $prijmeni ?></td>
+                                            <td><?= $telefon ?></td>
+                                            <td><?= $email ?></td>
+                                            <td><?= $a_mesto ?></td>
+                                            <td><?= $a_ulice ?></td>
+                                            <td><?= $a_psc ?></td>
                                         </tr>
-                                
-                                        <tr class="odd clickable-table gradeX" onclick="window.document.location='?p=nahled_klienta&id=2';">
-                                            <td>Radan</td>
-                                            <td>Dolihal</td>
-                                            <td>739999999</td>
-                                            <td>radan.prcek@gmail.com</td>
-                                            <td>Rosice</td>
-                                            <td>Podzahradní 12</td>
-                                            <td>664 00</td>
-                                        </tr>
+                                    <?php
+                                        endforeach;
+                                    ?>
                                   
                                     </tbody>
                                 </table>

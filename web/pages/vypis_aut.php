@@ -38,31 +38,31 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <?php
+                                        // require 'model/defaultModel.class.php';
+
+                                        $autoClass = new defaultModel($mysqli, 'auto');
+                                        $auta = $autoClass->getAll();
+
+                                        foreach ($auta as $auto):
+
+                                    ?>
                                        
-                                        <tr class="odd clickable-table gradeX" onclick="window.document.location='?p=nahled_auta&id=1';">
-                                            <td>4B0 6661</td>
-                                            <td>---</td>
-                                            <td>STK 1 </td>
-                                            <td>1995</td>
-                                            <td>Škoda</td>
-                                            <td>Octavia</td>
-                                            <td>28.06.1995</td>
-                                            <td>Zkontrolovat stav</td>
-                                            <td>2l 360koní 12334</td>
+                                        <tr class="odd clickable-table gradeX" onclick="window.document.location='?p=nahled_auta&id=<?= $auto['id'] ?>';">
+                                            <td><?= $auto['spz'] ?></td>
+                                            <td><?= $auto['vin'] ?></td>
+                                            <td><?= $auto['stk'] ?></td>
+                                            <td><?= $auto['rokVyroby'] ?></td>
+                                            <td><?= $auto['znacka'] ?></td>
+                                            <td><?= $auto['model'] ?></td>
+                                            <td><?= $auto['olej'] ?></td>
+                                            <td><?= $auto['poznamka'] ?></td>
+                                            <td><?= $auto['m_objem']." ".$auto['m_vykon']." ".$auto['m_kod'] ?> ?></td>
                                         </tr>
-                                
-                                        <tr class="odd clickable-table gradeX" onclick="window.document.location='?p=nahled_auta&id=1';">
-                                            <td>1B6 6661</td>
-                                            <td>---</td>
-                                            <td>STK 2 </td>
-                                            <td>2016</td>
-                                            <td>Opel</td>
-                                            <td>Astra</td>
-                                            <td>22.09.2018</td>
-                                            <td>---</td>
-                                            <td>2l 360koní 12334</td>
-                                        </tr>
-                                        
+
+                                    <?php
+                                        endforeach;
+                                    ?>
                                     </tbody>
                                 </table>
                             </div>

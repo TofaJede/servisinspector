@@ -1,4 +1,10 @@
 <?php
+// Setting up variables
+if (isset($_GET)){
+    foreach ($_GET as $key => $value) {
+        $$key = $value;
+    }
+}
 // Including base classes
 require 'model/database.class.php';
 require 'model/defaultModel.class.php';

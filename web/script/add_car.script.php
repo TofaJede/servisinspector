@@ -7,6 +7,7 @@
  */
 
 if (isset($_POST['add_car'])) {
+    //echo "ok"; die();
 
     require '../model/database.class.php';
     $mysqli = new database();
@@ -18,7 +19,7 @@ if (isset($_POST['add_car'])) {
         $$key = $value;
     }
 
-    $insert_klient = array(
+    $insert_auto = array(
         'spz' => $spz,
         'vin' => $vin,
         'stk' => $stk,
@@ -31,7 +32,7 @@ if (isset($_POST['add_car'])) {
         'm_kod' => $m_kod,
         'm_vykon' => $m_vykon
     );
-    $klient_id = $klient->add($insert_klient);
+    $klient_id = $auto->add($insert_auto);
     if ($klient_id != FALSE) {
         header("Location: ../?p=pridat_auto");
     } else {
